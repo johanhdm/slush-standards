@@ -1,0 +1,8 @@
+Static/node_modules/
+temp
+*.log
+.idea
+
+.DS_Store
+
+Static/Dist/
