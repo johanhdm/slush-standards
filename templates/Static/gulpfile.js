@@ -27,9 +27,9 @@ var config = {
               base + "/Source/js/app/**/*.js",
               ],
         "allJS" : [base + "/Source/js/**/*.*"],
-        "images" : [ base + "/Source/images/**/*.*", base + "/Source/*.png" ],
+        "images" : [ base + "/Source/images/**/*.*" ],
         "fonts" : [base + "/Source/fonts/**/*.*"],
-        "html" : [base + "/Source/*.html"],
+        "html" : [base + "/Source/**/*.html"],
         "misc" : [base + "/Source/*.png", base + "/Source/robots.txt", base + "/Source/*.ico", base + "/Source/*.xml"]
     },
     "dest" : {
@@ -101,7 +101,7 @@ gulp.task('clean', function(callback){
   del(config.dest.root, callback)
 });
 
-gulp.task('build', ['minify-css','compile-html', 'copy-images', 'copy-fonts', 'copy-misc', 'js'], function () { });
+gulp.task('build', ['sass', 'minify-css','compile-html', 'copy-images', 'copy-fonts', 'copy-misc', 'js'], function () { });
 
 
 gulp.task('server', function(){
@@ -117,8 +117,8 @@ gulp.task('server', function(){
 
 gulp.task('watch', function () {
     gulp.watch(config.src.html, ['compile-html']);
-    gulp.watch(config.src.css, ['build']);
-    gulp.watch(config.src.js, ['copy-js']);
+    gulp.watch(config.src.sass, ['sass', 'minify-css']);
+    gulp.watch(config.src.js, ['js']);
     gulp.watch(config.src.images, ['copy-images']);
     gulp.watch(config.src.fonts, ['copy-fonts']);
 
