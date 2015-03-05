@@ -80,6 +80,10 @@ gulp.task('default', function (done) {
         message: 'What is the github username?',
         default: defaults.userName
     }, {
+      type: 'confirm',
+      name: 'angular',
+      message: 'Do you want to use AngularJS in your app?', default: false
+    }, {
         type: 'confirm',
         name: 'moveon',
         message: 'Continue?'
@@ -93,7 +97,12 @@ gulp.task('default', function (done) {
             answers.appNameSlug = _.slugify(answers.appName);
             answers.clientNameSlug = _.slugify(answers.clientName);
 
-            gulp.src(__dirname + '/templates/**')
+            var files [__dirname + '/templates/**'];
+            if (!answers.angular){
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/angularjs-1.3.14/**/*.*');
+            }
+
+            gulp.src(files)
               .pipe(conflict('./'))
               .pipe(gulp.dest('./' + answers.appName))
               .on('end', function(){
