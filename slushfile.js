@@ -109,7 +109,7 @@ gulp.task('default', function (done) {
             answers.appNameSlug = _.slugify(answers.appName);
             answers.clientNameSlug = _.slugify(answers.clientName);
 
-            var files [__dirname + '/templates/**'];
+            var files = [__dirname + '/templates/**'];
             if (!answers.bootstrapjs && !answers.jquery){
               files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/jquery-1.11.2/**/*.*');
               files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2/**/*.*');
