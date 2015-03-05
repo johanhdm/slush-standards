@@ -111,14 +111,14 @@ gulp.task('default', function (done) {
 
             var files = [__dirname + '/templates/**'];
             if (!answers.bootstrapjs && !answers.jquery){
-              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/jquery-1.11.2/**/*.*');
-              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2/**/*.*');
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/jquery-1.11.2');
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2');
             }
             else if(!answers.bootstrap && answers.jquery){
-              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2/**/*.*');
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2');
             }
             if (!answers.angular){
-              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/angularjs-1.3.14/**/*.*');
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/angularjs-1.3.14');
             }
 
             gulp.src(files)
