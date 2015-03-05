@@ -79,10 +79,22 @@ gulp.task('default', function (done) {
         name: 'userName',
         message: 'What is the github username?',
         default: defaults.userName
-    }, {
+    },
+    {
+      type: 'confirm',
+      name: 'jquery',
+      message: 'Do you want to use jQuery?', default: true
+    },
+    {
+      type: 'confirm',
+      name: 'bootstrapjs',
+      message: 'Do you want to use Bootstrap JS?', default: true
+    },
+
+    {
       type: 'confirm',
       name: 'angular',
-      message: 'Do you want to use AngularJS in your app?', default: false
+      message: 'Do you want to use AngularJS?', default: false
     }, {
         type: 'confirm',
         name: 'moveon',
@@ -98,6 +110,13 @@ gulp.task('default', function (done) {
             answers.clientNameSlug = _.slugify(answers.clientName);
 
             var files [__dirname + '/templates/**'];
+            if (!answers.bootstrapjs && !answers.jquery){
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/jquery-1.11.2/**/*.*');
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2/**/*.*');
+            }
+            else if(!answers.bootstrap && answers.jquery){
+              files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/bootstrap-3.3.2/**/*.*');
+            }
             if (!answers.angular){
               files.push( '!' +  __dirname + '/templates/Static/Source/js/lib/angularjs-1.3.14/**/*.*');
             }
