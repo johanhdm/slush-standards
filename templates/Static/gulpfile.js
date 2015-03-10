@@ -20,6 +20,7 @@ var base = ".";
 var config = {
     "src": {
         "sass": [base + "/Source/css/app.scss"],
+        "allSass": [base + "/Source/css/**/*.scss"],
         "js": [base + "/Source/js/lib/jquery-1.11.2/*.js",
               base + "/Source/js/lib/bootstrap-3.3.2/*.js",
               base + "/Source/js/lib/bootstrap-3.3.2/**/*.js",
@@ -30,6 +31,7 @@ var config = {
         "images" : [ base + "/Source/images/**/*.*" ],
         "fonts" : [base + "/Source/fonts/**/*.*"],
         "html" : [base + "/Source/**/*.html"],
+        "allHtml" : [base + "/Source/**/*.html"],
         "misc" : [base + "/Source/*.png", base + "/Source/robots.txt", base + "/Source/*.ico", base + "/Source/*.xml"]
     },
     "dest" : {
@@ -116,8 +118,8 @@ gulp.task('server', function(){
 });
 
 gulp.task('watch', function () {
-    gulp.watch(config.src.html, ['compile-html']);
-    gulp.watch(config.src.sass, ['sass', 'minify-css']);
+    gulp.watch(config.src.allHtml, ['compile-html']);
+    gulp.watch(config.src.allSass, ['sass', 'minify-css']);
     gulp.watch(config.src.js, ['js']);
     gulp.watch(config.src.images, ['copy-images']);
     gulp.watch(config.src.fonts, ['copy-fonts']);
