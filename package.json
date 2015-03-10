@@ -1,7 +1,7 @@
 {
     "name": "slush-standards",
-    "description": "Slush generator for standards development with Bootstrap, jQuery.",
-    "version": "0.1.0",
+    "description": "Slush generator for standards development with Bootstrap, jQuery, Angular.",
+    "version": "0.1.1",
     "homepage": "https://github.com/johanhdm/slush-standards",
     "author": {
         "name": "Johan Halvarsson de Maar",
