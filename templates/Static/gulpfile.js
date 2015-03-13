@@ -130,7 +130,7 @@ gulp.task('server', function(){
 gulp.task('watch', function () {
     gulp.watch(config.src.allHtml, ['compile-html']);
     gulp.watch(config.src.allSass, ['sass', 'minify-css']);
-    gulp.watch(config.src.js, ['js']);
+    gulp.watch(config.src.allJs, ['js']);
     gulp.watch(config.src.images, ['copy-images']);
     gulp.watch(config.src.fonts, ['copy-fonts']);
 
