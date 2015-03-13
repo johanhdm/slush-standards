@@ -48,12 +48,14 @@ var config = {
 
 gulp.task('sass', function () {
     return gulp.src(config.src.sass)
+        .pipe(plumber())
         .pipe(sass({ sourcemap: true }))
         .pipe(gulp.dest(config.dest.css));
 });
 
 gulp.task('compile-html', function(){
   return gulp.src(config.src.html)
+    .pipe(plumber())
     .pipe(fileinclude({
       prefix : '@@',
       basepath: '@file'
@@ -63,6 +65,7 @@ gulp.task('compile-html', function(){
 
 gulp.task('js', ['copy-js'], function () {
     return gulp.src(config.src.js)
+        .pipe(plumber())
         .pipe(concat('app.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest(config.dest.js));
@@ -70,11 +73,13 @@ gulp.task('js', ['copy-js'], function () {
 
 gulp.task('copy-js', function(){
   return gulp.src(config.src.allJS)
+    .pipe(plumber())
     .pipe(gulp.dest(config.dest.js));
 });
 
 gulp.task('minify-css', ['sass'], function(){
     return gulp.src([config.dest.css + '/app.css'])
+        .pipe(plumber())
         .pipe(base64({
           baseDir : config.dest.root
           }))
@@ -85,16 +90,19 @@ gulp.task('minify-css', ['sass'], function(){
 
 gulp.task('copy-images', function(){
   return gulp.src(config.src.images)
-  .pipe(gulp.dest(config.dest.images))
+    .pipe(plumber())
+    .pipe(gulp.dest(config.dest.images))
 });
 
 gulp.task('copy-fonts', function(){
   return gulp.src(config.src.fonts)
+    .pipe(plumber())
     .pipe(gulp.dest(config.dest.fonts));
 });
 
 gulp.task('copy-misc', function(){
   return gulp.src(config.src.misc)
+    .pipe(plumber())
     .pipe(gulp.dest(config.dest.server));
 });
 
@@ -108,6 +116,7 @@ gulp.task('build', ['sass', 'minify-css','compile-html', 'copy-images', 'copy-fo
 
 gulp.task('server', function(){
   gulp.src(config.dest.server)
+    .pipe(plumber())
     .pipe(webserver({
       port: 3000,
       livereload : false,
