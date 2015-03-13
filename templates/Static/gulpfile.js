@@ -9,7 +9,8 @@ var gulp = require('gulp')
     , del = require('del')
     , serve = require('gulp-serve')
     , jshint = require('gulp-jshint')
-    , jscs = require('gulp-jscs');
+    , jscs = require('gulp-jscs')
+    , plumber = require('gulp-plumber');
 
 
 gulp.task('serve', serve('Dist'));
